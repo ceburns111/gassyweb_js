@@ -1,6 +1,5 @@
 <script>
-import axios from 'axios';
-
+import ListingService from '../Services/listingservice';
 export default {
     name: "Listings",
     data () {
@@ -8,18 +7,14 @@ export default {
         listings: [],
     }
   },
-
+  listingService: null,
   methods: {},
-
-  mounted() {
-    axios({ method: "GET", "url": "http://localhost:5200/ReverbListings/All" }).then(result => {
-      this.listings=result.data;
-    }, error => {
-      console.error(error);
-    });
+  created() { 
+    this.listingService = new ListingService();
   },
-  
-
+   mounted() {
+    this.listingService.getListingsAll().then(result => this.listings = result.data)
+  },
 };
 </script>
 
