@@ -1,13 +1,11 @@
 <script>
 import ListingService from '../Services/listingservice';
+
 export default {
     name: "Listing",
-    props: {
-        listingId: Number
-    },
     data () {
       return {
-        listing: {},
+        listing: {}
     }
   },
   listingService: null,
@@ -15,7 +13,7 @@ export default {
     this.listingService = new ListingService();
   },
    mounted() {
-    this.listingService.getListingById(this.listingId).then(result => this.listings = result.data)
+    this.listingService.getListingById(this.$route.params.id).then(result => this.listing = result.data)
   },
 };
 </script>

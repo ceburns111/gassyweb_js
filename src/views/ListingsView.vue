@@ -30,9 +30,10 @@ export default {
       <th>Link</th>
       <th>Created At</th>
       <th>Published At</th>
+      <th>More Info</th>
     </tr>
     <tr v-for="listing in listings" :key="listing.id">
-        <td> {{ listing.make }} </td>
+        <td> {{listing.make}} </td>
         <td> {{ listing.model }} </td>
         <td> {{ listing.price }} </td>
         <td> {{ listing.shipping }} </td>
@@ -42,6 +43,9 @@ export default {
         <td> {{ listing.link }} </td>
         <td> {{ listing.listingCreatedAt }} </td>
         <td> {{ listing.listingPublishedAt }} </td> 
+        <td><router-link :to="`/listing/${listing.reverbId}`"> More Info </router-link>
+
+</td>
     </tr>
   </table>
 </template>
