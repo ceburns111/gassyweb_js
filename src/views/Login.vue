@@ -1,33 +1,36 @@
 <script>
-import UserService from '../Services/userService';
+import { useUserStore } from '../stores/user'
 export default {
-
     name: "Login",
     data () {
       return {
         input: {
             username: "",
             password: "",
-            data: {},
             token: ""
         }
     }
   },
-  userService: null,
-  created() { 
-    this.userService = new UserService(); 
+  
+  setup() {
+    const userStore = useUserStore();
+    return { userStore }
   },
-   methods: {
+  created() { },
+  methods: {
     login() {
+      this.userStore.authenticateUser(this.input.username, this.input.password);
+
+      // this.userService.authenticate(this.input.username, this.input.password)
+      //   .then(result => { this.token = result.data['token']})
       
-        this.userService.authenticate(this.input.username, this.input.password).then(result => {
-          this.data = result.data,
-          this.token = result.data['token']
-        });
-        //if result = unautorized, do something
-        //if result = okay, store the token...global state fun
-        this.username = this.input.username;
-        this.password = this.input.password;
+      this.$router.push({name: 'User', params: { username: this.input.username}});
+        
+        
+        // //if result = unautorized, do something
+        // //if result = okay, store the token...global state fun
+        // this.username = this.input.username;
+        // this.password = this.input.password;
         }
     }
 }
