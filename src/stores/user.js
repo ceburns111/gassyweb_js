@@ -5,7 +5,8 @@ import UserService from "../Services/userService";
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
-    token: ""
+    token: "",
+    role: ""
   }),
   getters: {
     // getAThing: (state ) => { //default param must be named state
@@ -15,7 +16,10 @@ export const useUserStore = defineStore({
   actions: {
     authenticateUser (userName, userPassword) {
       const userService = new UserService();
-      userService.authenticate(userName, userPassword).then(result => { this.token = result.data['token']})
+      userService.authenticate(userName, userPassword).then(result => { 
+        this.token = result.data['token'],
+        this.role = result.data['role']
+      })
     },
   }
 })

@@ -1,22 +1,24 @@
 <script>
 import { useUserStore } from '../stores/user'
-    export default {
-        name: 'User',
-        data() {
-            return {};
-        },
-        setup() {
-            const userStore = useUserStore();
-            return { userStore }
+import { storeToRefs } from 'pinia';
+export default {
+    name: 'User',
+    data() {
+        return {};
+    },
+    setup() {
+        const userStore = useUserStore();
+        const { role } = storeToRefs(userStore);
+        return { role } 
   },        
-    }
+}
 </script>
 
 <template>
     <div id="secure">
-        <h1>Welcome {{this.$route.params.username}}</h1>
+        <h1>Welcome {{role}}</h1>
         <p>
-            This is your home page.
+            This is your user page. 
         </p>
     </div>
 </template>
