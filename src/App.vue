@@ -1,20 +1,21 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Navbar from "./components/NavBar.vue";
+export default {
+   name: "App",
+    data () {
+      return {
+    }
+  },
+  components: {
+    Navbar 
+  },
+}
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/listings">Listings</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <RouterView />
-</template>
+  <Navbar></Navbar>
+</template> 
 
 <style>
 @import "@/assets/base.css";
@@ -51,9 +52,9 @@ a,
 }
 
 nav {
-  width: 100%;
+  width: 50%;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   margin-top: 2rem;
 }
 

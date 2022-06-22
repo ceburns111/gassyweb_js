@@ -1,7 +1,8 @@
 <script>
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '../stores/user';
+import { RouterLink, RouterView } from "vue-router";
 export default {
-    name: "Login",
+    name: "login",
     data () {
       return {
         input: {
@@ -20,18 +21,8 @@ export default {
   methods: {
     login() {
       this.userStore.authenticateUser(this.input.username, this.input.password);
-
-      // this.userService.authenticate(this.input.username, this.input.password)
-      //   .then(result => { this.token = result.data['token']})
-      
       this.$router.push({name: 'User', params: { username: this.input.username}});
-        
-        
-        // //if result = unautorized, do something
-        // //if result = okay, store the token...global state fun
-        // this.username = this.input.username;
-        // this.password = this.input.password;
-        }
+      }
     }
 }
 </script>
@@ -39,9 +30,19 @@ export default {
 <template>
     <div id="login">
         <h1>Login</h1>
-        <h2>{{token}}</h2>
         <input type="text" name="username" v-model="input.username" placeholder="Username" />
         <input type="password" name="password" v-model="input.password" placeholder="Password" />
         <button type="button" @click="login()">Login</button>
     </div>
+    <div id="signup">
+      <RouterLink id="signup" to="/signup">Not a member? Sign up here!</RouterLink>    
+    </div>
 </template>
+
+<style>
+@import "@/assets/base.css";
+.signup {
+  text-align: center;
+  font-size: 100;
+}
+</style>

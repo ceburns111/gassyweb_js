@@ -1,12 +1,19 @@
 <script>
 import ListingService from '../Services/listingservice';
+import { useUserStore } from '../stores/user';
+import { storeToRefs } from 'pinia';
 export default {
-    name: "Listings",
+    name: "listings",
     data () {
       return {
         listings: [],
     }
   },
+   setup() {
+        const userStore = useUserStore();
+        const { role, token } = storeToRefs(userStore);
+        return { role, token } 
+  },        
   listingService: null,
   methods: {},
   created() { 
@@ -42,9 +49,7 @@ export default {
         <td> {{ listing.link }} </td>
         <td> {{ listing.listingCreatedAt }} </td>
         <td> {{ listing.listingPublishedAt }} </td> 
-        <td><router-link :to="`/listing/${listing.reverbId}`"> More Info </router-link>
-
-</td>
+        <td><router-link :to="`/listing/${listing.reverbId}`"> More Info </router-link></td>
     </tr>
   </table>
 </template>
