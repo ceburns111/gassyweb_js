@@ -2,7 +2,7 @@
 import ListingService from '../Services/listingservice';
 
 export default {
-    name: "Listing",
+    name: "listing",
     data () {
       return {
         listing: {}

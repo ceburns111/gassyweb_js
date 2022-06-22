@@ -2,7 +2,7 @@
 import { useUserStore } from '../stores/user'
 import { storeToRefs } from 'pinia';
 export default {
-    name: 'User',
+    name: 'user',
     data() {
         return {};
     },
@@ -16,9 +16,9 @@ export default {
 
 <template>
     <div id="secure">
-        <h1>Welcome {{role}}</h1>
+        <h1>Welcome</h1>
         <p>
-            This is your user page. 
+            Role: {{role}}
         </p>
     </div>
 </template>

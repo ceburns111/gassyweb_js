@@ -1,7 +1,8 @@
 <script>
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '../stores/user';
+import { RouterLink, RouterView } from "vue-router";
 export default {
-    name: "Login",
+    name: "login",
     data () {
       return {
         input: {
@@ -33,4 +34,15 @@ export default {
         <input type="password" name="password" v-model="input.password" placeholder="Password" />
         <button type="button" @click="login()">Login</button>
     </div>
+    <div id="signup">
+      <RouterLink id="signup" to="/signup">Not a member? Sign up here!</RouterLink>    
+    </div>
 </template>
+
+<style>
+@import "@/assets/base.css";
+.signup {
+  text-align: center;
+  font-size: 100;
+}
+</style>
