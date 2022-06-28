@@ -13,15 +13,10 @@ export default {
   },
   
   setup() {
-    // const userStore = useUserStore();
-    // const { useStore } = storeToRefs(userStore);
-    //     return { useStore } 
   },
   created() { },
   methods: {
-    login() {
-      // this.userStore.authenticateUser(this.input.username, this.input.password);
-      // this.$router.push({name: 'User', params: { username: this.input.username}});
+    register() {
       }
     }
 }
@@ -31,7 +26,6 @@ export default {
         <h1>Sign Up!</h1>
         <input type="text" name="username" v-model="input.username" placeholder="Username" />
         <input type="password" name="password" v-model="input.password" placeholder="Password" />
-        <input type="text" name="email" v-model="input.email" placeholder="Password" />
-
-        <button type="button" @click="login()">Register!</button>
+        <input type="text" name="email" v-model="input.email" placeholder="Email" />
+        <button type="button" @click="register()">Ok</button>
 </template>

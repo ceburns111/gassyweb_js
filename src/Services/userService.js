@@ -2,10 +2,9 @@ import axios from 'axios';
 
 
 export default class UserService {
-    
-    authenticate(userName, userPassword) {
+    async authenticate(userName, userPassword) {
         try {
-            return axios({
+            return await axios({
                 method: "post",
                 url: 'http://localhost:5200/users/authenticate',
                 data: {
@@ -18,8 +17,4 @@ export default class UserService {
             console.error(err);
         }
     }
-
-    // getAllUsers(token) {
-    //     return axios.get(`http://localhost:5200/listings/${listingId}`);
-    // }
 }

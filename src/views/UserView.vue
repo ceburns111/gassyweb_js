@@ -8,18 +8,21 @@ export default {
     },
     setup() {
         const userStore = useUserStore();
-        const { role } = storeToRefs(userStore);
-        return { role } 
+        const { role, username, email} = storeToRefs(userStore);
+        return { role, username, email} 
   },        
 }
 </script>
 
 <template>
     <div id="secure">
-        <h1>Welcome</h1>
-        <p>
+        <h1>{{username}}</h1>
+        <ul>
             Role: {{role}}
-        </p>
+        </ul>
+        <ul>
+            Email: {{email}}
+        </ul>
     </div>
 </template>
 

@@ -14,28 +14,31 @@ export default {
         const { username } = storeToRefs(userStore);
         return { username }
   },        
-  listingService: null,
-//   methods: {},
-//   created() { 
-//     this.listingService = new ListingService();
-//   },
-//    mounted() {
-//     this.listingService.getListingsAll().then(result => this.listings = result.data)
-//   },
-
 }
 </script>
+
 <template>
-  <header>
-    <div class="wrapper">
+ <header>
+    <div class="nbar">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink v-if="username != '' " to="/wishlist">Your Wishlist</RouterLink>
-        <RouterLink to="/listings">Listings</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink class="nitem" to="/">Home</RouterLink>
+        <RouterLink class="nitem" v-if="username != ''"   :to="`/user/${username}`">Account</RouterLink>
+        <RouterLink class="nitem"  v-if="username != '' " to="/wishlist">Wishlist</RouterLink>
+        <RouterLink class="nitem" to="/listings">Listings</RouterLink>
+        <RouterLink class="nitem"  v-if="username === '' " to="/login">Login</RouterLink>
+        <RouterLink class="nitem" to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+ </header>
   <RouterView />
 </template>
+
+<style>
+  .nbar {
+    background-color: rgb(67, 158, 79);
+    padding: 1.2rem;
+  }
+  .nitem {
+    padding: 12px;
+  }
+</style>
