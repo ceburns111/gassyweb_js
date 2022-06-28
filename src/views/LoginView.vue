@@ -14,14 +14,14 @@ export default {
   },
   
   setup() {
-    const userStore = useUserStore();
-    return { userStore }
+    const userStore = useUserStore();   
+    return { userStore };
   },
   created() { },
   methods: {
     login() {
       this.userStore.authenticateUser(this.input.username, this.input.password);
-      this.$router.push({name: 'User', params: { username: this.input.username}});
+      this.$router.push({name: 'wishlistview'});
       }
     }
 }
@@ -42,7 +42,7 @@ export default {
 <style>
 @import "@/assets/base.css";
 .signup {
-  text-align: center;
+  text-align: right;
   font-size: 100;
 }
 </style>

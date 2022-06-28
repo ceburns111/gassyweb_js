@@ -5,8 +5,10 @@ export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
     username: "",
+    email: "",
     role: "",
-    token: ""
+    token: "",
+    id: "",
   }),
   getters: {
   },
@@ -16,9 +18,11 @@ export const useUserStore = defineStore({
       userService.authenticate(userName, userPassword).then(result => { 
         this.token = result.data['token'],
         this.role = result.data['role'],
-        this.username = result.data['username']
+        this.username = result.data['userName'],
+        this.id = result.data['id'],
+        this.email = result.data['email']
       })
-    },
+    }
   }
 })
 
