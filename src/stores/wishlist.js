@@ -13,9 +13,8 @@ export const useWishlistStore = defineStore({
    async getItems () {
     const userStore = useUserStore(); 
     const wishlistService = new WishlistService(); 
-    this.items = await wishlistService.getItems(userStore.id, userStore.token).then(result => result.data);
-  },
-    
+    await (wishlistService.getItems(userStore.id, userStore.token)).then(result => this.items = result.data);
+  },    
   }
 })
 
