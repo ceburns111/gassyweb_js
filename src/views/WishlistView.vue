@@ -14,17 +14,26 @@ export default {
     return { items }
   },
   mounted() {
-    //this.wishlist_items.push(items[0])
+    this.wishlist_items = this.items['items']
   }
   
 };
 </script>
 
 <template>
-<a>{{this.items}}</a>
-  <!-- <table>
-  <tr v-for="item in items" :key="item.make">
+<h1>Your Wishlist</h1>
+ <table>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Mininum Price (USD)</th>
+      <th>Maximum Price (USD)</th>
+    </tr>
+    <tr v-for="item in this.wishlist_items" :key="item.make">
         <td> {{item.make}} </td>
+        <td> {{item.model}} </td>
+        <td> {{item.minPrice}} </td>
+        <td> {{item.maxPrice}}</td>
   </tr> 
-  </table> -->
+  </table>
 </template>
