@@ -1,6 +1,6 @@
-import { defineStore, storeToRefs } from "pinia";
-//import WishlistService from "../Services/wishlistService";
-// import { useUserStore } from "./userStore"
+import { defineStore } from "pinia";
+import WishlistService from "../Services/wishlistService";
+import { useUserStore } from '../stores/user';
 
 export const useWishlistStore = defineStore({
   id: 'wishlist',
@@ -10,11 +10,12 @@ export const useWishlistStore = defineStore({
   getters: {
   },
   actions: {
-   getItems () {
-      // const userStore = useUserStore();
-      // const wishlistService = new WishlistService(); 
-      // return await wishlistService.getItems(userStore.id, userStore.token).then(result => result.data);
-    },
+   async getItems () {
+    const userStore = useUserStore(); 
+    const wishlistService = new WishlistService(); 
+    this.items = await wishlistService.getItems(userStore.id, userStore.token).then(result => result.data);
+  },
+    
   }
 })
 
