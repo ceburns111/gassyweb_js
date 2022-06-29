@@ -1,5 +1,7 @@
 <script>
 import { useUserStore } from '../stores/user';
+import { useWishlistStore } from '../stores/wishlist';
+
 import { RouterLink, RouterView } from "vue-router";
 export default {
     name: "login",
@@ -15,13 +17,15 @@ export default {
   
   setup() {
     const userStore = useUserStore();   
-    return { userStore };
+    const wishlistStore = useWishlistStore(); 
+    return { userStore, wishlistStore };
   },
   created() { },
   methods: {
-    login() {
-      this.userStore.authenticateUser(this.input.username, this.input.password);
-      this.$router.push({name: 'wishlistview'});
+    async login() {
+      await this.userStore.authenticateUser(this.input.username, this.input.password);
+      await this.wishlistStore.getItems(); 
+      this.$router.push({name: 'listings'});
       }
     }
 }

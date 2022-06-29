@@ -1,40 +1,30 @@
 <script>
-//import { useWishlistStore } from '../stores/wishlist';
-// import { storeToRefs } from 'pinia';
-
-
+import { useWishlistStore } from '../stores/wishlist';
+import { storeToRefs } from "pinia";
 
 export default {
     name: "wishlistview",
     data () {
       return {
-        items: []
+        wishlist_items: []
     }
   },
-  // setup() {
-  //   const wishlistStore = useWishlistStore();
-  //   return { wishlistStore }
-  // },
-  // mounted() {
-  //   this.items = await this.wishlistStore.getItems(); 
-  // }
+  setup() {
+    const items  = storeToRefs(useWishlistStore())
+    return { items }
+  },
+  mounted() {
+    //this.wishlist_items.push(items[0])
+  }
+  
 };
 </script>
 
 <template>
-  <table>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Min Price</th>
-      <th>Max Price</th>
-    </tr>
-    <tr>
-    </tr>
-  </table>
-  <table>
-  <!-- <tr v-for="item in this.items" :key="item.make">
+<a>{{this.items}}</a>
+  <!-- <table>
+  <tr v-for="item in items" :key="item.make">
         <td> {{item.make}} </td>
-  </tr>  -->
-  </table>
+  </tr> 
+  </table> -->
 </template>
