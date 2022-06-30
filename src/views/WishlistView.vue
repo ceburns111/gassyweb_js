@@ -1,6 +1,8 @@
 <script>
 import { useWishlistStore } from '../stores/wishlist';
 import { storeToRefs } from "pinia";
+import { RouterLink, RouterView } from "vue-router";
+
 
 export default {
     name: "wishlistview",
@@ -15,6 +17,11 @@ export default {
   },
   mounted() {
     this.wishlist_items = this.items['items']
+  },
+  methods: {
+    addNewItem() {
+        this.$router.push({name: 'wishlist_item'});
+    }
   }
   
 };
@@ -34,6 +41,7 @@ export default {
         <td> {{item.model}} </td>
         <td> {{item.minPrice}} </td>
         <td> {{item.maxPrice}}</td>
-  </tr> 
+  </tr>
   </table>
+  <button type="button" @click="addNewItem()">New Item</button>
 </template>

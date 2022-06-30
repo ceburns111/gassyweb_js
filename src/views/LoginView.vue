@@ -1,8 +1,8 @@
 <script>
 import { useUserStore } from '../stores/user';
 import { useWishlistStore } from '../stores/wishlist';
-
 import { RouterLink, RouterView } from "vue-router";
+
 export default {
     name: "login",
     data () {
