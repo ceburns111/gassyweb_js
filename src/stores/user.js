@@ -31,7 +31,20 @@ export const useUserStore = defineStore({
       } finally {
         this.loading = false;
       }
+    },
+     //Adds new item to users wishlist
+     async signup(userName, userPassword, email, phoneNumber, firstName, lastName) {
+      try {
+      const userService = new UserService();
+      return await (userService.signup(userName, userPassword, email, phoneNumber, firstName, lastName));
+      }
+      catch (error) {
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
     }
   }
 })
 
+//async signup(userName, userPassword, email, phoneNumber, firstName, lastName) {

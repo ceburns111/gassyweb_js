@@ -27,7 +27,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
-  const publicPages = ['/login', '/about'];
+  const publicPages = ['/login', '/about', '/signup'];
   const authRequired = !publicPages.includes(to.path);
   const auth = useUserStore()
   if (authRequired && !auth.id) {

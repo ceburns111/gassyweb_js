@@ -26,7 +26,7 @@ export default {
       await this.userStore.authenticateUser(this.input.username, this.input.password);
       await this.wishlistStore.getItems(); 
       this.$router.push({name: 'listings'});
-      }
+      },
     }
 }
 </script>
