@@ -38,14 +38,24 @@ export default {
 
 <template>
   <div id="addNewItem">
-    <h1>New Item</h1>
+    <h1 v-if="input.make != ''">{{input.make}} {{input.model}}</h1> 
+    <h1 v-else>New Item</h1>  
       <input type="text" name="make" v-model="input.make" placeholder="Make" />
       <input type="text" name="model" v-model="input.model" placeholder="Model" />
       <input type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
       <input type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
-      <button type="button" @click="addnew()">Ok</button>
+      <button class= "addNew" type="button" @click="addnew()">Ok</button>
   </div>
 </template>
+
+<style>
+  .addNew {
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  padding: 0.4ch;
+  align-items: right;
+}
+</style>
 <!-- 
    <div id="login">
         <h1>Login</h1>

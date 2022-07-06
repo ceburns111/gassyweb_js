@@ -1,16 +1,19 @@
 import { defineStore } from "pinia";
 import UserService from "../Services/userService";
+import { useStorage } from "@vueuse/core";
+
 
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
-    username: "",
-    email: "",
-    role: "",
-    token: "",
-    id: "",
-    loading: false,
-    error: null
+    //username: "",
+    username: useStorage("username", ""),
+    email: useStorage("email", ""),
+    role: useStorage("role", ""),
+    token: useStorage("token", ""),
+    id: useStorage("id", ""),
+    loading: useStorage("loading", false),
+    error: useStorage("error", null),
   }),
   getters: {
   },
@@ -43,8 +46,12 @@ export const useUserStore = defineStore({
       } finally {
         this.loading = false;
       }
+    },
+    logout() {
+      this.username = null; 
+      this.id = null; 
+      this.token = null; 
     }
   }
 })
 
-//async signup(userName, userPassword, email, phoneNumber, firstName, lastName) {

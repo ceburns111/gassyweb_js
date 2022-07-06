@@ -8,15 +8,16 @@ export default {
     name: "wishlistview",
     data () {
       return {
-        wishlist_items: []
+        //wishlist_items: []
     }
   },
   setup() {
-    const items  = storeToRefs(useWishlistStore())
-    return { items }
+    const wishlistStore = useWishlistStore(); 
+    //const items = storeToRefs(useWishlistStore());
+    return { wishlistStore }
   },
   mounted() {
-    this.wishlist_items = this.items['items']
+    //this.wishlist_items = this.items['items'];
   },
   methods: {
     addNewItem() {
@@ -36,12 +37,21 @@ export default {
       <th>Mininum Price (USD)</th>
       <th>Maximum Price (USD)</th>
     </tr>
-    <tr v-for="item in this.wishlist_items" :key="item.make">
+    <tr v-for="item in wishlistStore.items" :key="item.make">
         <td> {{item.make}} </td>
         <td> {{item.model}} </td>
         <td> {{item.minPrice}} </td>
         <td> {{item.maxPrice}}</td>
   </tr>
   </table>
-  <button type="button" @click="addNewItem()">New Item</button>
+  <button class= "addNew" type="button" @click="addNewItem()">Add an item!</button>
 </template>
+
+<style>
+  .addNew {
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  padding: 0.4ch;
+  align-items: right;
+}
+</style>

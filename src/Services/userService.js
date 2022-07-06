@@ -19,7 +19,7 @@ export default class UserService {
     }
 
     async signup(userName, userPassword, email, phoneNumber, firstName, lastName) {
-        try {
+    try {
        return await axios({
             method: "post",
             url: "http://localhost:5200/users/signup",

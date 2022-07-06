@@ -9,13 +9,11 @@ import UserView from "../views/UserView.vue";
 import WishlistView from "../views/WishlistView.vue";
 import WishlistItemView from "../views/WishlistItemView.vue";
 import { useUserStore } from '../stores/user'
-import AboutView from "../views/AboutView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", name: "home", component: HomeView, },
-    { path: "/about", name: "about", component: AboutView, },
     { path: "/listings", name: "listings", component: ListingsView },
     { path: "/listing/:id", name: "listing", component: ListingView },
     { path: "/wishlist", name: "wishlistview", component: WishlistView },
