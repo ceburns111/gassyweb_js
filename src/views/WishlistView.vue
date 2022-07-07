@@ -8,20 +8,18 @@ export default {
     name: "wishlistview",
     data () {
       return {
-        //wishlist_items: []
     }
   },
   setup() {
     const wishlistStore = useWishlistStore(); 
-    //const items = storeToRefs(useWishlistStore());
     return { wishlistStore }
-  },
-  mounted() {
-    //this.wishlist_items = this.items['items'];
   },
   methods: {
     addNewItem() {
         this.$router.push({name: 'wishlist_item'});
+    },
+     capitalize(str) {
+      return str[0].toUpperCase() + str.substring(1);
     }
   }
   
@@ -36,12 +34,14 @@ export default {
       <th>Model</th>
       <th>Mininum Price (USD)</th>
       <th>Maximum Price (USD)</th>
+      <th>Category</th>
     </tr>
     <tr v-for="item in wishlistStore.items" :key="item.make">
-        <td> {{item.make}} </td>
-        <td> {{item.model}} </td>
-        <td> {{item.minPrice}} </td>
-        <td> {{item.maxPrice}}</td>
+        <td> {{capitalize(item.make)}} </td>
+        <td> {{capitalize(item.model)}} </td>
+        <td> ${{item.minPrice}} </td>
+        <td> ${{item.maxPrice}}</td>
+        <td> {{capitalize(item.category)}} </td>
   </tr>
   </table>
   <button class= "addNew" type="button" @click="addNewItem()">Add an item!</button>
