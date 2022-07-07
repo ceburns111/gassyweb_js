@@ -11,7 +11,6 @@ export default {
     },
      setup() {
         const userStore = useUserStore();
-        //const { userStore.username } = storeToRefs(userStore);
         return { userStore }
   },        
    methods: {
@@ -44,7 +43,7 @@ export default {
 
 <style>
   .nbar {
-    background-color: rgb(241, 241, 221);
+    background-color: rgb(146, 146, 146);
     padding: 1.2rem;
   }
   .nitem {

@@ -22,9 +22,6 @@ export default {
     const { id } = storeToRefs(useUserStore);
     return { wishlistStore, id}
   },
-  mounted() {
-    //Add method for getting a single wishlist item, if this route is passed an ID, otherwise display blank. 
-  },
   methods: {
     async addnew() {
       await (this.wishlistStore.addItem(this.input.make, this.input.model, this.input.minPrice, this.input.maxPrice));

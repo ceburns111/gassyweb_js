@@ -15,7 +15,11 @@ export default {
         return { role, token } 
   },        
   listingService: null,
-  methods: {},
+  methods: {
+    capitalize(str) {
+      return str[0].toUpperCase() + str.substring(1);
+    }
+  },
   created() { 
     this.listingService = new ListingService();
   },
@@ -28,6 +32,7 @@ export default {
 <template>
   <table>
     <tr>
+      <th>Category</th>
       <th>Make</th>
       <th>Model</th>
       <th>Price</th>
@@ -39,10 +44,11 @@ export default {
       <th>Published At</th>
     </tr>
     <tr v-for="listing in listings" :key="listing.id">
-        <td> {{listing.make}} </td>
-        <td> {{ listing.model }} </td>
-        <td> {{ listing.price }} </td>
-        <td> {{ listing.shipping }} </td>
+        <td> {{ capitalize(listing.category) }} </td>
+        <td> {{ capitalize(listing.make) }} </td>
+        <td> {{ capitalize(listing.model) }} </td>
+        <td> ${{ listing.price }} </td>
+        <td> ${{ listing.shipping }} </td>
         <td> {{ listing.itemDescription }} </td>
         <td> {{ listing.itemCondition }} </td>
         <td> {{ listing.offersEnabled }} </td>

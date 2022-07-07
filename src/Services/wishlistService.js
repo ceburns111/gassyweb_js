@@ -4,7 +4,7 @@ export default class WishlistService {
     async getItems(userId, token) {
         return await axios({
             method: "get",
-            url:  `http://localhost:5200/wishlist/items/${userId}`,
+            url:  `http://107.21.89.197:80/wishlist/items/${userId}`,
             headers: {
                         authorization: 'Bearer ' + token
             }  
@@ -14,7 +14,7 @@ export default class WishlistService {
     async addItem(make, model, minPrice, maxPrice, ownerId, token) {
         return await axios({
             method: "post",
-            url: "http://localhost:5200/wishlist/new",
+            url: "http://107.21.89.197:80/wishlist/new",
             headers: {
                 authorization: 'Bearer ' + token
             },
