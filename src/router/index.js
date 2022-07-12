@@ -9,6 +9,7 @@ import UserView from "../views/UserView.vue";
 import WishlistView from "../views/WishlistView.vue";
 import WishlistItemView from "../views/WishlistItemView.vue";
 import { useUserStore } from '../stores/user'
+import axios from 'axios';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,9 @@ router.beforeEach(async (to) => {
     auth.returnUrl = to.fullPath;
     return '/login';
   }
-})
+});
+
+
+
 
 export default router;

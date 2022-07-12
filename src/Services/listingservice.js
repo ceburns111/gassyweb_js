@@ -4,10 +4,20 @@ import axios from 'axios';
 export default class ListingService {
     
     getListingsAll() {
-        return axios.get('http://107.21.89.197:80/listings/all');
+        try {
+            return axios.get('http://localhost:5200/listings/all');
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 
     getListingById(listingId) {
-        return axios.get(`http://107.21.89.197:80/listings/${listingId}`);
+        try {
+            return axios.get(`http://localhost:5200/listings/${listingId}`);
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 }

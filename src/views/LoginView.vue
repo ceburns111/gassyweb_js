@@ -17,14 +17,14 @@ export default {
   
   setup() {
     const userStore = useUserStore();   
-    const wishlistStore = useWishlistStore(); 
-    return { userStore, wishlistStore };
+    //const wishlistStore = useWishlistStore(); 
+    return { userStore }; //, wishlistStore };
   },
   created() { },
   methods: {
     async login() {
       await this.userStore.authenticateUser(this.input.username, this.input.password);
-      await this.wishlistStore.getItems(); 
+      //await this.wishlistStore.getItems(); 
       this.$router.push({name: 'listings'});
       },
     }

@@ -21,9 +21,14 @@ export const useWishlistStore = defineStore({
     
     //Adds new item to users wishlist
     async addItem(make, model, minPrice, maxPrice) {
-      const userStore = useUserStore();
-      const wishlistService = new WishlistService();
-      await (wishlistService.addItem(make, model, minPrice, maxPrice, userStore.id, userStore.token));
+      try {
+        const userStore = useUserStore();
+        const wishlistService = new WishlistService();
+        await (wishlistService.addItem(make, model, minPrice, maxPrice, userStore.id, userStore.token));
+      }
+      catch (err) {
+          console.error(err);
+      }
     }
   }
 })
