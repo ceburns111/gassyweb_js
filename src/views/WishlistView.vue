@@ -14,6 +14,9 @@ export default {
     const wishlistStore = useWishlistStore(); 
     return { wishlistStore }
   },
+  created() {
+        this.wishlistStore.getItems(); 
+  },
   methods: {
     addNewItem() {
         this.$router.push({name: 'wishlist_item'});

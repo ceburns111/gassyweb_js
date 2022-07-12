@@ -6,7 +6,7 @@ export default class UserService {
         try {
             return await axios({
                 method: "post",
-                url: 'http://107.21.89.197:80/users/authenticate',
+                url: 'http://localhost:5200/users/authenticate',
                 data: {
                     UserName: userName,
                     UserPassword: userPassword
@@ -22,7 +22,7 @@ export default class UserService {
     try {
        return await axios({
             method: "post",
-            url: "http://107.21.89.197:80/users/signup",
+            url: "http://localhost:5200/users/signup",
             data: {
                 UserName: userName,
                 UserPassword: userPassword,
