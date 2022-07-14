@@ -35,7 +35,7 @@ export default {
         this.input.lastname
         );   
         
-      await this.userStore.authenticateUser(this.input.username, this.input.password);
+      await this.userStore.login(this.input.username, this.input.password);
       this.$router.push({name: 'user', params: { username: this.input.username }});
       }
     }

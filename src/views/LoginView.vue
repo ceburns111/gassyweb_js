@@ -23,7 +23,7 @@ export default {
   created() { },
   methods: {
     async login() {
-      await this.userStore.authenticateUser(this.input.username, this.input.password);
+      await this.userStore.login(this.input.username, this.input.password);
       //await this.wishlistStore.getItems(); 
       this.$router.push({name: 'listings'});
       },

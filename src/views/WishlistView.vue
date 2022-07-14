@@ -1,36 +1,25 @@
 <script>
-import { useWishlistStore } from '../stores/wishlist';
-import { storeToRefs } from "pinia";
-import { RouterLink, RouterView } from "vue-router";
-
-
+// import { useWishlistStore } from '../stores/wishlist';
 export default {
     name: "wishlistview",
     data () {
       return {
     }
   },
-  setup() {
-    const wishlistStore = useWishlistStore(); 
-    return { wishlistStore }
-  },
-  created() {
-        this.wishlistStore.getItems(); 
+  mounted() {
   },
   methods: {
-    addNewItem() {
-        this.$router.push({name: 'wishlist_item'});
-    },
-     capitalize(str) {
-      return str[0].toUpperCase() + str.substring(1);
-    }
+    // addNewItem() {
+    //     this.$router.push({name: 'wishlist_item'});
+    // },
   }
   
 };
 </script>
 
 <template>
-<h1>Your Wishlist</h1>
+<h1>wishlist placeholder</h1>
+<!-- <h1>Your Wishlist</h1>
  <table>
     <tr>
       <th>Make</th>
@@ -40,14 +29,14 @@ export default {
       <th>Category</th>
     </tr>
     <tr v-for="item in wishlistStore.items" :key="item.make">
-        <td> {{capitalize(item.make)}} </td>
-        <td> {{capitalize(item.model)}} </td>
+        <td> {{item.make}} </td>
+        <td> {{item.model}} </td>
         <td> ${{item.minPrice}} </td>
         <td> ${{item.maxPrice}}</td>
-        <td> {{capitalize(item.category)}} </td>
+        <td> {{item.category}} </td>
   </tr>
   </table>
-  <button class= "addNew" type="button" @click="addNewItem()">Add an item!</button>
+  <button class= "addNew" type="button" @click="addNewItem()">Add an item!</button> -->
 </template>
 
 <style>

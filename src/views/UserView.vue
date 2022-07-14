@@ -8,8 +8,8 @@ export default {
     },
     setup() {
         const userStore = useUserStore();
-        const { role, username, email} = storeToRefs(userStore);
-        return { role, username, email} 
+        const { role, username, email, token} = storeToRefs(userStore);
+        return { role, username, email, token} 
   },        
 }
 </script>
