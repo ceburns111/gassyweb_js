@@ -9,6 +9,10 @@ import UserView from "../views/UserView.vue";
 import WishlistView from "../views/WishlistView.vue";
 import WishlistItemView from "../views/WishlistItemView.vue";
 import { useUserStore } from '../stores/user'
+import UserService from "../Services/userService";
+import { storeToRefs } from 'pinia';
+
+
 import axios from 'axios';
 
 const router = createRouter({
@@ -35,7 +39,32 @@ router.beforeEach(async (to) => {
   }
 });
 
+// axios.interceptors.request.use(
+//   function (config) {
+//     ///before request sent do something 
+//     console.log("config: " + config.url);
+//     return config;
+// },
+// function (error) {
+//   // Do something with request error
+//   return Promise.reject(error.toJSON());
+// });
 
 
+// axios.interceptors.response.use(
+//   function(successRes) {
+//     return successRes;
+//   }, 
+//   function(error) {
+//       if (error.response.status === 401)
+//       {
+//         console.log("Funnauthorized response...attempting to refresh JWT token")
+//          const userStore = useUserStore();
+//          //userStore.refreshToken();
+//       }
+//       return Promise.reject(error.toJSON());
+
+//   }
+// );
 
 export default router;
