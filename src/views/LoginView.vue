@@ -1,8 +1,4 @@
 <script>
-import { useUserStore } from '../stores/user';
-import { useWishlistStore } from '../stores/wishlist';
-import { RouterLink, RouterView } from "vue-router";
-
 export default {
     name: "login",
     data () {
@@ -13,40 +9,11 @@ export default {
             token: ""
         }
     }
-  },
-  
-  setup() {
-    const userStore = useUserStore();   
-    //const wishlistStore = useWishlistStore(); 
-    return { userStore }; //, wishlistStore };
-  },
-  created() { },
-  methods: {
-    async login() {
-      await this.userStore.login(this.input.username, this.input.password);
-      //await this.wishlistStore.getItems(); 
-      this.$router.push({name: 'listings'});
-      },
-    }
+  }, 
 }
 </script>
 
 <template>
-    <div id="login">
-        <h1>Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Username" />
-        <input type="password" name="password" v-model="input.password" placeholder="Password" />
-        <button type="button" @click="login()">Login</button>
-    </div>
-    <div id="signup">
-      <RouterLink id="signup" to="/signup">Not a member? Sign up here!</RouterLink>    
-    </div>
+ <h1>login placeholder</h1>
 </template>
 
-<style>
-@import "@/assets/base.css";
-.signup {
-  text-align: right;
-  font-size: 100;
-}
-</style>
