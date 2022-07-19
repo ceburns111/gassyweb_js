@@ -1,5 +1,5 @@
 import { accountService } from "../Services/accountService";
-import router from "./router";
+import {router} from "../router";
 
 export function authGuard(to) {
     const account = accountService.accountValue; 

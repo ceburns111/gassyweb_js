@@ -1,7 +1,6 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
 import { useUserStore } from '../stores/user';
-import { storeToRefs } from 'pinia';
 
 export default {
     name: "Navbar",
@@ -37,7 +36,6 @@ export default {
       </nav>
     </div>
  </header>
- 
   <RouterView />
 </template>
 

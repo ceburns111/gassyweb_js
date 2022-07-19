@@ -1,7 +1,7 @@
 import axios from "axios";
 import { accountService } from "../Services/accountService";
 
-export function errorIntercetpro() {
+export function errorInterceptor() {
     axios.interceptors.response.use(null, (error) => {
         const { response } = error;
         if (!response) {

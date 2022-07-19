@@ -1,60 +1,43 @@
 import axios from "axios";
+import {router} from "../router"
+
 import { BehaviorSubject } from 'rxjs';
 
-const baseUrl= "";
+const baseUrl= "http://localhost:5200/users";
 const accountSubject = new BehaviorSubject(null);
 
 export const accountService = {
     login,
-    refreshToken, 
-    logout,
     account: accountSubject.asObservable(),
     get accountValue() { return accountSubject.value; }
 };
 
 async function login(userName, userPassword) {
+    const x = "";
     //authenticate with Gassy API
-    const user = await axios({
+    const authResponse = await axios({
         method: "post",
         url: 'http://localhost:5200/users/authenticate',
+        //url: `${baseUrl}/authenticate`,
         data: {
             UserName: userName,
             UserPassword: userPassword
         },
-    }).then(result => result.data);
+    });
 
-    if (!user) return;
+    console.log(authResponse.data);
+   // .then(result => { 
+        //     this.token = result.data['token'],
+        //     this.role = result.data['role'],
+        //     this.username = result.data['userName'],
+        //     this.id = result.data['id'],
+        //     this.email = result.data['email']
 
-    accountSubject.next(account);
+    if (!authResponse) return;
+
+    accountSubject.next(authResponse.data);
 
    // get return url from query parameters or default to home page
-   const returnUrl = router.currentRoute.value.query['returnUrl'] || '/';
-   router.push(returnUrl);
-}
-
-async function refreshToken(userName, userPassword) {
-    // return await axios({
-    //     method: "post",
-    //     url: "http://localhost:5200/users/Refresh-Token",
-    //     headers: {
-    //         authorization: "Bearer " + oldToken
-    //     }
-    // });
-}
-
-function logout() {
-
-}
-
-
-//helper methods
-let authenticateTimeout; 
-
-function startAuthenticateTimer() {
-    const jwtToken = JSON.parse(accountSubject.value.token.split('.')[1]);
-    const expires = new Date(jwtToken.exp * 1000);
-    const timeout = expires.getTime() - Date.now() - (60 *100);
-    authenticateTimeout = setTimeout(() => {
-        
-    }, timeout);
+   //const returnUrl = router.currentRoute.value.query['returnUrl'] || '/';
+   router.push({name: "home"});
 }
