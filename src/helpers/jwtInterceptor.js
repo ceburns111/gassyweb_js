@@ -1,15 +1,19 @@
 import axios from 'axios';
 
-import { accountService } from '@/_services';
+import { accountService } from "../Services/accountService";
 
-export function jwtInterceptor() {
+export async function jwtInterceptor() {
     axios.interceptors.request.use(request => {
+        console.log("Itercepting request...");
         // add auth header with jwt if account is logged in and request is to the api url
         const account = accountService.accountValue;
+        
         const isLoggedIn = account?.token;
-        const isApiUrl = request.url.startsWith("http://localhost");
+        console.log(`Request URL: ${request.url}`);
+        const isAuthUrl = request.url.startsWith("http://localhost/users/authenticate");
 
-        if (isLoggedIn && isApiUrl) {
+        if (isLoggedIn && !isAuthUrl) {
+            console.log("attaching token...")
             request.headers.common.Authorization = `Bearer ${account.token}`;
         }
 

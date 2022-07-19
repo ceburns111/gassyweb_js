@@ -55,7 +55,6 @@ export default {
         <td> {{ listing.link }} </td>
         <td> {{ listing.listingCreatedAt }} </td>
         <td> {{ listing.listingPublishedAt }} </td> 
-        <td><router-link :to="`/listing/${listing.reverbId}`"> More Info </router-link></td>
     </tr>
   </table>
 </template>
