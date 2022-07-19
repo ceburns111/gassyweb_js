@@ -13,7 +13,7 @@ export async function jwtInterceptor() {
         const isAuthUrl = request.url.startsWith("http://localhost/users/authenticate");
 
         if (isLoggedIn && !isAuthUrl) {
-            console.log("attaching token...")
+            console.log(`attaching token: ${account.token}`)
             request.headers.common.Authorization = `Bearer ${account.token}`;
         }
 
