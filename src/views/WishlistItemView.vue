@@ -11,16 +11,6 @@ export default {
         }
     }
   },
-  mounted: {
-    
-  },
-  methods: {
-    async addnew() {
-      // await (this.wishlistStore.addItem(this.input.make, this.input.model, this.input.minPrice, this.input.maxPrice));
-      // this.$router.push({name: 'wishlistview'});      
-    }
-  }
-  
 };
 </script>
 
