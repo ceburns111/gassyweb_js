@@ -1,18 +1,12 @@
-import axios from 'axios';
-
+import ax from "../helpers/axiosConfig"
 
 export const wishlistService = {
     getItems,
-    // account: accountSubject.asObservable(),
-    // get accountValue() { return accountSubject.value; }
 };
 
 async function getItems(userId) {
-    console.log(`Id: ${userId}`);
-    return await axios({
-        method: "get",
-        url:  `http://localhost:5200/wishlist/items/${userId}`,
-    });
+    console.log(`Getting items for UserId: ${userId}`);
+    return await ax.get(`http://localhost:5200/wishlist/items/${userId}`);
 }
 
 

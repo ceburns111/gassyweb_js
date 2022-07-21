@@ -18,8 +18,7 @@ export default {
  
     if (account?._value.id != null)
     {    
-      
-      await wishlistService.getItems(account?._value.id || 0).then(result => this.items = result.data);
+      await wishlistService.getItems(account?._value.id || 0).then(result => this.items = result.data );
     }
    
   }
@@ -27,23 +26,21 @@ export default {
 </script>
 
 <template>
-<h1>wishlist</h1>
-{{items}}
-{{this.items}}
-<table>
+<h1>Your Wishlist</h1>
+ <table>
     <tr>
       <th>Category</th>
       <th>Make</th>
       <th>Model</th>
-      <th>MinPrice</th>
-      <th>MaxPrice</th>
-
+      <th>Min Price</th>
+      <th>Max Price</th>
     </tr>
     <tr v-for="item in items" :key="item.id">
-        <td> {{ listing.Make }} </td>
-        <td> {{ listing.Model }} </td>
-        <!-- <td> ${{ listing.maxPrice }} </td>
-        <td> ${{ listing.minPrice }} </td> -->
+        <td>{{item.category}}</td>
+        <td>{{ item.make}} </td>
+        <td>{{item.model}}</td>
+        <td>{{item.minPrice}}</td>
+        <td>{{item.maxPrice}}</td>
     </tr>
   </table>
 </template>
