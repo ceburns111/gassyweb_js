@@ -14,14 +14,5 @@
 </template>
 
 <style>
-body { background-color: rgb(49, 49, 45); }
-.about_par {
-    font-size: 18px;
-    text-align: center;
-}
-h2 {
-    font-size: 30px;
-    text-align: center;
-}
 </style>
 
