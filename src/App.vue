@@ -1,5 +1,7 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
+import Button from 'primevue/button';
+
 import { ref } from 'vue';
 import { accountService } from "./Services/accountService";
 export default {
@@ -10,7 +12,6 @@ export default {
       return {
             account,
             logout: accountService.logout,
-            refreshToken: accountService.refreshToken           
         }
     }
   }
@@ -22,14 +23,10 @@ export default {
     <div class="nbar">
       <nav>
         <RouterLink class="nitem" to="/">Home</RouterLink>
-        <!-- <RouterLink class="nitem" :to="`/user/${userStore.username}`">Account</RouterLink> -->
         <RouterLink class="nitem" to="/listings">Listings</RouterLink>
         <RouterLink class="nitem" to="/wishlist">Wishlist</RouterLink>
         <RouterLink class="nitem" to="/login">Login</RouterLink>
-        <a class="nav-item nav-link" @click="logout">Logout</a>
-        <div></div>
-        <a class="nav-item nav-link" @click="refreshToken">Refresh Token</a>
-
+        <Button label="Submit" class="nav-item nav-link" @click="logout" />
       </nav>
     </div>
  </header>
