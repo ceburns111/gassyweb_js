@@ -3,6 +3,7 @@ import { createPinia } from "pinia";
 import PrimeVue from 'primevue/config';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
+import Menubar from 'primevue/menubar';
 
 import 'primevue/resources/themes/rhea/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -21,6 +22,7 @@ const app = createApp(App);
 
 app.component('InputText', InputText);
 app.component('Button', Button);
+app.component('Menubar', Menubar)
 
 app.use(createPinia());
 app.use(router);
