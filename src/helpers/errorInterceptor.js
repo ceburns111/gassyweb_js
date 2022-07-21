@@ -1,8 +1,10 @@
 import axios from "axios";
+import ax from "./axiosConfig";
 import { accountService } from "../Services/accountService";
 
 export function errorInterceptor() {
-    axios.interceptors.response.use(null, (error) => {
+    ax.interceptors.response.use(null, (error) => {
+        console.log("intercepting error...")
         const { response } = error;
         if (!response) {
             // network error
@@ -15,7 +17,9 @@ export function errorInterceptor() {
             accountService.logout();
         }
 
-        const errorMessage = response.data?.message || response.statusText;
+        const errorMessage = response.data || response.statusText;
+        //onst errorMessage = Promise.Reject(error.response.data.err)
+        //console.log(`uhh: ${JSON.stringify(response)}`)
         console.error('ERROR:', errorMessage);
-    });
+    })
 }

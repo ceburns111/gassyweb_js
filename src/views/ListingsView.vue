@@ -1,7 +1,5 @@
 <script>
 import ListingService from '../Services/listingservice';
-import { useUserStore } from '../stores/user';
-import { storeToRefs } from 'pinia';
 export default {
     name: "listings",
     data () {
@@ -10,9 +8,6 @@ export default {
     }
   },
    setup() {
-        const userStore = useUserStore();
-        const { role, token } = storeToRefs(userStore);
-        return { role, token } 
   },        
   listingService: null,
   methods: {

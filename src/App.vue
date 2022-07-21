@@ -8,7 +8,9 @@ export default {
       accountService.account.subscribe(x => account.value = x);
 
       return {
-            account            
+            account,
+            logout: accountService.logout,
+            refreshToken: accountService.refreshToken           
         }
     }
   }
@@ -21,9 +23,13 @@ export default {
       <nav>
         <RouterLink class="nitem" to="/">Home</RouterLink>
         <!-- <RouterLink class="nitem" :to="`/user/${userStore.username}`">Account</RouterLink> -->
-        <RouterLink class="nitem" to="/wishlist">Wishlist</RouterLink>
         <RouterLink class="nitem" to="/listings">Listings</RouterLink>
+        <RouterLink class="nitem" to="/wishlist">Wishlist</RouterLink>
         <RouterLink class="nitem" to="/login">Login</RouterLink>
+        <a class="nav-item nav-link" @click="logout">Logout</a>
+        <div></div>
+        <a class="nav-item nav-link" @click="refreshToken">Refresh Token</a>
+
       </nav>
     </div>
  </header>
