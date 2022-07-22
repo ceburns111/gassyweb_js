@@ -1,11 +1,11 @@
 <script>
-// import { RouterLink, RouterView } from "vue-router";
-// import Button from 'primevue/button';
+import { router } from './router/router';
 import Menubar from 'primevue/menubar';
 
 import { ref } from 'vue';
 import { accountService } from "./Services/accountService";
 export default {
+  name: "App",
   data() {
     return {
     items:[
@@ -14,17 +14,17 @@ export default {
               to: '/',
             },
             {
+              label:'Wishlist',
+              to: '/wishlist',
+            },
+            {
               label:'Listings',
-              to: '/listings',
+              to: '/Listings',
             },
             {
               label:'Login',
-              to: '/login',
+              to: '/Login',
             },
-            {
-              label:'Logout',
-              to: '/logout',
-            }
           ]
     }
   },
@@ -36,25 +36,43 @@ export default {
             account,
             logout: accountService.logout,
         }
+    },
+    methods: {
+      navTo(to){
+        router.push(to);
+      }
+
     }
   }
 
 </script>
 
 <template>
-  <div>
+<header>
+    <div class="wrapper">
     <Menubar :model="items">
     <template #start>
     </template>
     <template #item="{item}">
-        <a :href="item.label">{{item.label}}</a>
+        <Button :href="item.label" @click="navTo(item.to)">{{item.label}}</Button>
     </template>
     <template #end>
     </template>
     </Menubar>
   </div>
+  </header>
+
+  <RouterView/>
+
 </template> 
 
 
+
+
 <style>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+
 </style>

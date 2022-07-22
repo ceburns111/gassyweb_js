@@ -14,6 +14,8 @@ export async function jwtInterceptor() {
         const isRefreshUrl = request.url.startsWith("http://localhost:5200/users/refresh-token")
         const isAuthUrl = request.url.startsWith("http://localhost:5200/users/authenticate");
         console.log("Checking if the user is logged in...")
+        
+        //if it is the listing route, this is public and does not need a token...
         if (isLoggedIn)
         {
             console.log("The user is logged in, inspecting route")
@@ -23,6 +25,7 @@ export async function jwtInterceptor() {
                     request.headers.common.Authorization = `Bearer ${account.token}`;         
             }
         }
+    
         
         console.log("Intercept request completed.")
         console.log("...........................")

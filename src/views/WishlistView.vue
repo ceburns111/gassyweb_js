@@ -44,3 +44,7 @@ export default {
     </tr>
   </table>
 </template>
+
+<style scoped>
+
+</style>

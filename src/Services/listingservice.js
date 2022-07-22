@@ -1,12 +1,11 @@
-import ax from "../helpers/axiosConfig"
-
+import axios from 'axios';
 export default class ListingService {
     
     getListingsAll() {
-        return ax.get('http://localhost:5200/listings/all');
+        return axios.get('http://localhost:5200/listings/all');
     }
 
     getListingById(listingId) {
-        return ax.get(`http://localhost:5200/listings/${listingId}`);
+        return axios.get(`http://localhost:5200/listings/${listingId}`);
     }
 }
