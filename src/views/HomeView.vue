@@ -23,7 +23,6 @@ export default {
 <main>
   <WelcomeToGassy></WelcomeToGassy>
   <div>
-  <p>Not a member?</p>
   <Button @click="toSignup()">Sign up here</Button>
   </div>
   
