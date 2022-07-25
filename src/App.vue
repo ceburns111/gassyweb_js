@@ -1,9 +1,9 @@
 <script>
 import { router } from './router/router';
 import Menubar from 'primevue/menubar';
-
 import { ref } from 'vue';
 import { accountService } from "./Services/accountService";
+
 export default {
   name: "App",
   data() {

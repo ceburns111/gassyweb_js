@@ -5,7 +5,7 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
 
-import 'primevue/resources/themes/rhea/theme.css';
+import 'primevue/resources/themes/nova/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 

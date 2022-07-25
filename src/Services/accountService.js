@@ -11,7 +11,7 @@ const accountSubject = new BehaviorSubject(null);
 export const accountService = {
     login,
     logout,
-    refreshToken: refreshJwtToken,
+    signup,
     account: accountSubject.asObservable(),
     get accountValue() { return accountSubject.value; }
 };
@@ -20,11 +20,7 @@ async function login(userName, userPassword) {
     console.log(`Attempting to authenticate user: ${userName}...`)
 
     let reqBody = { UserName: userName, UserPassword: userPassword };
-
     let authResponse = await ax.post(`${baseUrl}/authenticate`, reqBody);
-    
-    console.log("Full Account...")
-    console.log(JSON.stringify(authResponse.data));
 
     if (!authResponse.data) {
         return;
@@ -40,6 +36,29 @@ async function login(userName, userPassword) {
    console.log("Login completed.")
    console.log("...........................")
    console.log("...........................")
+}
+
+async function signup(userName, userPassword, firstName, lastName, email, phoneNumber) {
+    let data = { UserName: userName, UserPassword: userPassword, FirstName: firstName, LastName: lastName, Email: email, PhoneNumber: phoneNumber };
+    let signupResponse = await ax.post(`${baseUrl}/signup`, data);
+    
+    console.log(JSON.stringify(signupResponse.data));
+    if (!signupResponse.data) {
+        return;
+    }
+
+    login(signupResponse.data['userName'], signupResponse.data['userPassword']);
+
+    accountSubject.next(signupResponse.data);
+    await _startAuthenticateTimer();
+
+    
+    router.push('/listings');
+   
+   console.log("Signup completed.")
+   console.log("...........................")
+   console.log("...........................")
+
 }
 
 async function refreshJwtToken() {
