@@ -1,5 +1,7 @@
 <script>
 import ListingService from '../Services/listingservice';
+import { accountService } from "../Services/accountService"
+
 export default {
     name: "listings",
     data () {

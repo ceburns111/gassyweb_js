@@ -2,6 +2,7 @@
 import {wishlistService}  from '../Services/wishlistService';
 import { accountService } from "../Services/accountService"
 import { ref } from 'vue';
+import { router } from '../router/router';
 
 
 export default {
@@ -21,6 +22,11 @@ export default {
       await wishlistService.getItems(account?._value.id || 0).then(result => this.items = result.data );
     }
    
+  },
+  methods: {
+    addNewItem() {
+      router.push('/wishlist_item')
+    }
   }
 };
 </script>
@@ -43,6 +49,7 @@ export default {
         <td>{{item.maxPrice}}</td>
     </tr>
   </table>
+  <Button @click="addNewItem()">Add an item</Button>
 </template>
 
 <style scoped>
