@@ -11,6 +11,7 @@ export const accountService = {
     login,
     logout,
     signup,
+    editAccount,
     account: accountSubject.asObservable(),
     get accountValue() { return accountSubject.value; }
 };
@@ -98,6 +99,11 @@ async function _startAuthenticateTimer() {
     console.log("...........................")
     console.log("...........................")
 
+}
+
+async function editAccount(userId) {
+    // console.log(`Getting items for UserId: ${userId}`);
+    // return await ax.get(`http://localhost:5200/wishlist/items/${userId}`);
 }
 
 function logout() {

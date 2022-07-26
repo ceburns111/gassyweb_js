@@ -21,6 +21,10 @@ export default {
               label:'Listings',
               to: '/Listings',
             },
+             {
+              label:'Account',
+              to: '/Account',
+            },
           ]
     }
   },

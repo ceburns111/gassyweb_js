@@ -6,8 +6,9 @@ import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
 import Column from 'primevue/column';
 import DataTable from 'primevue/datatable'
+//import InputText from 'primevue/inputtext';
 
-import 'primevue/resources/themes/luna-green/theme.css';
+import 'primevue/resources/themes/arya-blue/theme.css';
 import './assets/main.css'
 //import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
