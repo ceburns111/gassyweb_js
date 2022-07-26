@@ -22,15 +22,11 @@ export default {
 <template>
 <main>
   <WelcomeToGassy></WelcomeToGassy>
-  <div>
-  <p>Not a member?</p>
-  <Button @click="toSignup()">Sign up here</Button>
-  </div>
-  
+  <a @click="toSignup()">Not a member? Sign up here.</a>
 </main>
 </template>
 
-<style>
+<style scoped>
 
 </style>
 

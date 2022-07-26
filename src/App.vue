@@ -5,7 +5,7 @@ import { ref } from 'vue';
 import { accountService } from "./Services/accountService";
 
 export default {
-  name: "App",
+  name: "app",
   data() {
     return {
     items:[
@@ -50,33 +50,27 @@ export default {
 </script>
 
 <template>
-<header>
-    <div class="wrapper">
-    <Menubar :model="items">
+    <div>
+    <Menubar id="mBar" :model="items">
     <template #start>
     </template>
     <template #item="{item}">
-        <Button :href="item.label" @click="navTo(item.to)">{{item.label}}</Button>
+        <a class="hdCol" @click="navTo(item.to)">{{item.label}}</a>
     </template>
     <template #end>
-    <Button v-if="account === null" @click="loginAccount()">Login</Button>
-    <Button v-else @click="logoutAccount()">Logout</Button>
+    <a v-if="account === null" @click="loginAccount()">Login</a>
+    <a v-else @click="logoutAccount()">Logout</a>
     </template>
     </Menubar>
+    <RouterView/>
   </div>
-  </header>
-
-  <RouterView/>
-
 </template> 
 
 
 
 
-<style>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style scoped>
+.hdCol {
+  padding: 10px; 
 }
-
 </style>
