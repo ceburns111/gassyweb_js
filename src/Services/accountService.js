@@ -4,8 +4,7 @@ import {router} from "../router"
 import ax from "../helpers/axiosConfig";
 
 import { BehaviorSubject } from 'rxjs';
-
-const baseUrl= "http://localhost:5200/users";
+const baseUrl = `${import.meta.env.VITE_GASSY_URL}/users`;
 const accountSubject = new BehaviorSubject(null);
 
 export const accountService = {
@@ -87,18 +86,13 @@ async function _startAuthenticateTimer() {
     // set a timeout to re-authenticate with the api one minute before the token expires
     const expires = new Date(jwtToken.exp * 1000);
     
+    
     const timeout = expires.getTime() - Date.now() - (60 * 1000);
     authenticateTimeout = setTimeout(() => 
         refreshJwtToken(accountSubject.value.token),
         timeout
         );
 
-    
-    // let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-    // authenticateTimeout = async () => {
-    //     await refreshToken(accountSubject.value.token); 
-    //     await wait(timeout);
-    // };
 
     console.log("Start authentication timer completed.")
     console.log("...........................")

@@ -7,8 +7,9 @@ import Menubar from 'primevue/menubar';
 import Column from 'primevue/column';
 import DataTable from 'primevue/datatable'
 
-import 'primevue/resources/themes/nova/theme.css';
-import 'primevue/resources/primevue.min.css';
+import 'primevue/resources/themes/luna-green/theme.css';
+import './assets/main.css'
+//import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 
 import App from "./App.vue";

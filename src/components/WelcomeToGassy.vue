@@ -8,6 +8,8 @@ export default {
 </script>
 
 <template>
+<div>
 <h1>Welcome to Gassy!</h1>
+</div>
 </template>
 

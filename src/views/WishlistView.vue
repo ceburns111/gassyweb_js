@@ -33,25 +33,15 @@ export default {
 
 <template>
 <h1>Your Wishlist</h1>
- <table>
-    <tr>
-      <th>Category</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Min Price</th>
-      <th>Max Price</th>
-    </tr>
-    <tr v-for="item in items" :key="item.id">
-        <td>{{item.category}}</td>
-        <td>{{ item.make}} </td>
-        <td>{{item.model}}</td>
-        <td>{{item.minPrice}}</td>
-        <td>{{item.maxPrice}}</td>
-    </tr>
-  </table>
-  <Button @click="addNewItem()">Add an item</Button>
+<DataTable :value="items">
+  <Column field="category" header="Product Category"></Column>
+  <Column field="make" header="Make"></Column>
+  <Column field="model" header="Model"></Column>
+  <Column field="minPrice" header="Min Price"></Column>
+  <Column field="maxPrice" header="Max Price"></Column>
+</DataTable>
+
 </template>
 
 <style scoped>
-
 </style>

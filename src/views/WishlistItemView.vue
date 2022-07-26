@@ -46,7 +46,7 @@ export default {
     <input type="text" name="category" v-model="input.itemCategory" placeholder="Category" />
     <input type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
     <input type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
-    <Button type="button" @click="addNewItem()">Add Item</Button>
+    <Button @click="addNewItem()">Add Item</Button>
   </div>
   <div></div>
 

@@ -13,9 +13,6 @@ export default {
   },        
   listingService: null,
   methods: {
-    capitalize(str) {
-      return str[0].toUpperCase() + str.substring(1);
-    }
   },
   created() { 
     this.listingService = new ListingService();
@@ -27,34 +24,29 @@ export default {
 </script>
 
 <template>
-  <table>
-    <tr>
-      <th>Category</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Price</th>
-      <th>Shipping</th>
-      <th>Condition</th>
-      <th>Description</th>
-      <th>Link</th>
-      <th>Created At</th>
-      <th>Published At</th>
-    </tr>
-    <tr v-for="listing in listings" :key="listing.id">
-        <td> {{ capitalize(listing.category) }} </td>
-        <td> {{ capitalize(listing.make) }} </td>
-        <td> {{ capitalize(listing.model) }} </td>
-        <td> ${{ listing.price }} </td>
-        <td> ${{ listing.shipping }} </td>
-        <td> {{ listing.itemDescription }} </td>
-        <td> {{ listing.itemCondition }} </td>
-        <td> {{ listing.offersEnabled }} </td>
-        <td> {{ listing.link }} </td>
-        <td> {{ listing.listingCreatedAt }} </td>
-        <td> {{ listing.listingPublishedAt }} </td> 
-    </tr>
-  </table>
+<div id="title">
+<h1>Listings</h1>
+</div>
+<DataTable :value="listings">
+  <Column class="col" field="category" header="Product Category"></Column>
+  <Column field="make" header="Make"></Column>
+  <Column field="model" header="Model"></Column>
+  <Column field="price" header="Price"></Column>
+  <Column field="shipping" header="Shipping"></Column>
+  <Column field="itemCondition" header="Condition"></Column>
+  <Column field="itemDescription" header="Description"></Column>
+  <Column field="link" header="Link"></Column>
+  <Column field="listingCreatedAt" header="Created"></Column>
+  <Column field="listingPublishedAt" header="Published"></Column>
+</DataTable>
 </template>
+
+<style scoped>
+#title {
+  display: block;
+
+}
+</style>
 
 
     
