@@ -24,8 +24,8 @@ export default {
     async submitEdit() {
        await accountService.editAccount(this.account.id, this.account.firstName, this.account.lastName, this.account.email, "");
     },
-    deleteAccount() {
-        const x = "";
+    async deleteAccount() {
+        await accountService.deleteAccount(this.account.id);
     }
    }
 }
