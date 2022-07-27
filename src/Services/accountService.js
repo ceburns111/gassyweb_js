@@ -11,6 +11,7 @@ export const accountService = {
     login,
     logout,
     signup,
+    editAccount,
     account: accountSubject.asObservable(),
     get accountValue() { return accountSubject.value; }
 };
@@ -95,9 +96,24 @@ async function _startAuthenticateTimer() {
 
 
     console.log("Start authentication timer completed.")
-    console.log("...........................")
-    console.log("...........................")
+    console.log("....................................")
 
+}
+
+async function editAccount(id, firstName, lastName, email, phoneNumber) {
+    let data = { Id: id, FirstName: firstName, LastName: lastName, Email: email, PhoneNumber: phoneNumber };
+    let response = await ax.post(`${baseUrl}/Edit`, data);
+    console.log(JSON.stringify(response.data));
+
+    if (!response.data) {
+        return;
+    }
+  
+    
+    router.push('/listings');
+   
+   console.log("Edit account completed.")
+   console.log("................................")
 }
 
 function logout() {
