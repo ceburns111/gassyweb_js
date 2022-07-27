@@ -10,6 +10,15 @@ export default {
     data() {
         return {};
     },
+     setup() {
+      const account = ref(null);
+      accountService.account.subscribe(x => account.value = x);
+
+      return {
+            account,
+            logout: accountService.logout,
+        }
+    },
     components: { WelcomeToGassy },
     methods: {
       toSignup() {
@@ -21,12 +30,22 @@ export default {
 
 <template>
 <main>
-  <WelcomeToGassy></WelcomeToGassy>
-  <a @click="toSignup()">Not a member? Sign up here.</a>
+  <Card id="mainCard">
+    <template #header>
+      <WelcomeToGassy></WelcomeToGassy>
+        <div v-if="account === null">
+          <a @click="toSignup()">Not a member? Sign up here.</a>
+        </div>
+    </template>
+  </Card> 
 </main>
 </template>
 
 <style scoped>
-
+#mainCard {
+  margin-top: 2%;
+  vertical-align:auto;
+  text-align: center;
+}
 </style>
 

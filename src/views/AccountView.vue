@@ -21,8 +21,11 @@ export default {
             }
    },
    methods: {
-    submitEdit() {
-        
+    async submitEdit() {
+       await accountService.editAccount(this.account.id, this.account.firstName, this.account.lastName, this.account.email, "");
+    },
+    deleteAccount() {
+        const x = "";
     }
    }
 }
@@ -30,22 +33,28 @@ export default {
 
 
 <template>
-<h2>Edit Account</h2>
+<h1>Edit Account</h1>
 <div>
-<InputText v-model="account.userName"/>
-<InputText v-model="account.email"/>
-<InputText v-model="account.firstName"/>
-<InputText v-model="account.lastName"/>
-
-<Button class="uEdit" @click="saveChanges()">Submit</Button>
-
-
+    <h3>Email</h3>
+    <InputText v-model="account.email"/>
+    <h3>First Name</h3>
+    <InputText v-model="account.firstName"/>
+    <h3>Last Name</h3>
+    <InputText v-model="account.lastName"/>
+</div>
+<div id="submitArea">
+    <Button class="p-button-sm" @click="submitEdit()">Submit Changes</Button>
+</div>
+<div id="deleteArea">
+    <Button class="p-button-sm" @click="deleteAccount()">Delete Account</Button>
 </div>
 </template>
 
 <style scoped>
-.uEdit {
-    background-color: white;
-
+#submitArea {
+    margin-top: 2%;
+}
+#deleteArea {
+    margin-top: 2%;
 }
 </style>

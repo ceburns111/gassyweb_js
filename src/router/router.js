@@ -13,8 +13,8 @@ const routes = [
     { path: "/", name: "home", component: HomeView },    
     { path: "/login", name: "login", component: LoginView },
     { path: "/signup", name: "signup", component: SignupView},
+    { path: "/listings", name: "listings", component: ListingsView, },
     { path: "/account", name: "account", component: AccountView, beforeEnter: authGuard },
-    { path: "/listings", name: "listings", component: ListingsView, beforeEnter: authGuard },
     { path: "/wishlist", name: "wishlistview", component: WishlistView,  beforeEnter: authGuard },
     { path: "/wishlist_item", name: "wishlist_item", component: WishlistItemView,  beforeEnter: authGuard },
   ];

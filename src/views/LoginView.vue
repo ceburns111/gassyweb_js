@@ -24,11 +24,11 @@ export default {
 </script>
 
 <template>
-  <div id="login">
+  <div>
     <h1>Login</h1>
-    <input type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input type="password" name="password" v-model="input.password" placeholder="Password" />
-    <button type="button" @click="login()">Login</button>
+    <Input-Text type="text" name="username" v-model="input.username" placeholder="Username" />
+    <Input-Text type="password" name="password" v-model="input.password" placeholder="Password" />
+    <Button class="p-button-sm" type="button" @click="login()">Login</Button>
   </div>
   <div>
   </div>

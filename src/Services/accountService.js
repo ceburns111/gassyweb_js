@@ -96,14 +96,24 @@ async function _startAuthenticateTimer() {
 
 
     console.log("Start authentication timer completed.")
-    console.log("...........................")
-    console.log("...........................")
+    console.log("....................................")
 
 }
 
-async function editAccount(userId) {
-    // console.log(`Getting items for UserId: ${userId}`);
-    // return await ax.get(`http://localhost:5200/wishlist/items/${userId}`);
+async function editAccount(id, firstName, lastName, email, phoneNumber) {
+    let data = { Id: id, FirstName: firstName, LastName: lastName, Email: email, PhoneNumber: phoneNumber };
+    let response = await ax.post(`${baseUrl}/Edit`, data);
+    console.log(JSON.stringify(response.data));
+
+    if (!response.data) {
+        return;
+    }
+  
+    
+    router.push('/listings');
+   
+   console.log("Edit account completed.")
+   console.log("................................")
 }
 
 function logout() {

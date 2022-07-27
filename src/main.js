@@ -6,11 +6,13 @@ import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
 import Column from 'primevue/column';
 import DataTable from 'primevue/datatable'
+import Card from 'primevue/card';
+
 //import InputText from 'primevue/inputtext';
 
 import 'primevue/resources/themes/arya-blue/theme.css';
 import './assets/main.css'
-//import 'primevue/resources/primevue.min.css';
+import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 
 import App from "./App.vue";
@@ -29,6 +31,7 @@ app.component('Button', Button);
 app.component('Menubar', Menubar)
 app.component('Column', Column);
 app.component('DataTable', DataTable);
+app.component('Card', Card);
 
 
 

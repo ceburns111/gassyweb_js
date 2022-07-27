@@ -14,12 +14,12 @@ export default {
               to: '/',
             },
             {
-              label:'Wishlist',
-              to: '/wishlist',
-            },
-            {
               label:'Listings',
               to: '/Listings',
+            },
+            {
+              label:'Wishlist',
+              to: '/wishlist',
             },
              {
               label:'Account',
@@ -54,16 +54,15 @@ export default {
 </script>
 
 <template>
-    <div>
+     <div class="positioned p-d-flex p-jc-between p-ai-center">
     <Menubar id="mBar" :model="items">
-    <template #start>
-    </template>
+    <template #start></template>
     <template #item="{item}">
-        <a class="hdCol" @click="navTo(item.to)">{{item.label}}</a>
+        <a v-if="account != null || (item.label != 'Wishlist' && item.label != 'Account')" class="hdCol" @click="navTo(item.to)">{{item.label}}</a>
     </template>
     <template #end>
-    <a v-if="account === null" @click="loginAccount()">Login</a>
-    <a v-else @click="logoutAccount()">Logout</a>
+    <a class="hdCol" v-if="account === null" @click="loginAccount()">Login</a>
+    <a class="hdCol" v-else @click="logoutAccount()">Logout</a>
     </template>
     </Menubar>
     <RouterView/>
@@ -76,5 +75,8 @@ export default {
 <style scoped>
 .hdCol {
   padding: 10px; 
+}
+#mBar {
+  background-color:rgb(29, 31, 32)
 }
 </style>

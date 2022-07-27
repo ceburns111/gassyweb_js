@@ -29,15 +29,15 @@ export default {
 <template>
   <div id="signup">
     <h1>Sign Up</h1>
-    <input type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input type="password" name="password" v-model="input.password" placeholder="Password" />
-    <input type="text" name="firstname" v-model="input.firstname" placeholder="First Name" />
-    <input type="text" name="lastname" v-model="input.lastname" placeholder="Last Name" />
-    <input type="text" name="phonenumber" v-model="input.phonenumber" placeholder="Phone Number" />
-    <input type="text" name="email" v-model="input.email" placeholder="Email" />
-    <button type="button" @click="signup()">Create Account</button>
+
+    <Input-Text type="text" name="username" v-model="input.username" placeholder="Username" />
+    <Input-Text type="password" name="password" v-model="input.password" placeholder="Password" />
+    <Input-Text type="text" name="firstname" v-model="input.firstname" placeholder="First Name" />
+    <Input-Text type="text" name="lastname" v-model="input.lastname" placeholder="Last Name" />
+    <Input-Text type="text" name="phonenumber" v-model="input.phonenumber" placeholder="Phone Number" />
+    <Input-Text type="text" name="email" v-model="input.email" placeholder="Email" />
+    <Button class="p-button-sm" type="button" @click="signup()">Create Account</Button>
   </div>
-  <div>
-  </div>
+
 </template>
 
