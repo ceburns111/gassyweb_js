@@ -54,6 +54,5 @@ export default {
 </DataTable>
 <a @click="addNewItem()">Add an item!</a>
 </template>
-
 <style scoped>
 </style>

@@ -12,6 +12,7 @@ export const accountService = {
     logout,
     signup,
     editAccount,
+    deleteAccount,
     account: accountSubject.asObservable(),
     get accountValue() { return accountSubject.value; }
 };
@@ -47,13 +48,13 @@ async function signup(userName, userPassword, firstName, lastName, email, phoneN
         return;
     }
 
-    login(signupResponse.data['userName'], signupResponse.data['userPassword']);
+    // login(signupResponse.data['userName'], signupResponse.data['userPassword']);
 
-    accountSubject.next(signupResponse.data);
-    await _startAuthenticateTimer();
+    // accountSubject.next(signupResponse.data);
+    // await _startAuthenticateTimer();
 
     
-    router.push('/listings');
+    router.push('/login');
    
    console.log("Signup completed.")
    console.log("...........................")
@@ -114,6 +115,11 @@ async function editAccount(id, firstName, lastName, email, phoneNumber) {
    
    console.log("Edit account completed.")
    console.log("................................")
+}
+
+async function deleteAccount(userId) {
+    await ax.post(`${baseUrl}/${userId}/delete`);
+    logout();
 }
 
 function logout() {
