@@ -28,6 +28,22 @@ export default {
     },
   methods: {
     async addNewItem() {
+        if (!this.input.make) {
+          this.errors.push('Make is required')
+      }
+       if (!this.input.model) {
+          this.errors.push('Model is required')
+      }
+       if (!this.input.itemCategory) {
+          this.errors.push('Category is required')
+      }
+       if (!this.input.minPrice) {
+          this.errors.push('Minimum Price is required')
+      }
+       if (!this.input.maxPrice) {
+          this.errors.push('Maximum Price is required')
+      }
+
       console.log(`Adding new item for account..${JSON.stringify(this.account.id)}`);
       await wishlistService.addItem(this.account.id, this.input.make, this.input.model, this.input.itemCategory, this.input.minPrice, this.input.maxPrice)
       router.push('/wishlist')
@@ -39,6 +55,7 @@ export default {
 </script>
 
 <template>
+<div v-if="this.items"></div>
  <div id="addItem">
     <h2>Add Item</h2>
     <Input-Text type="text" name="make" v-model="input.make" placeholder="Make" />

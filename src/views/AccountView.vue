@@ -37,6 +37,7 @@ export default {
 <div>
     <h3>Email</h3>
     <InputText v-model="account.email"/>
+      <h3>Phone</h3>
     <h3>First Name</h3>
     <InputText v-model="account.firstName"/>
     <h3>Last Name</h3>
