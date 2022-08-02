@@ -17,6 +17,7 @@ async function addItem(userId, make, model, category, minPrice, maxPrice) {
     console.log(`Adding item for User: ${userId}`);
     var itemData = {OwnerId: userId, Make: make, Model: model, Category: category, MinPrice: minPrice, maxPrice: maxPrice}
     await ax.post(`${baseUrl}/new`, itemData);
+    router.push("/wishlist")
 }
 
 async function deleteItem(itemId) {

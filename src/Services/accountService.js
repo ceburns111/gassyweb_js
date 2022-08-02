@@ -31,8 +31,8 @@ async function login(userName, userPassword) {
     await _startAuthenticateTimer();
 
    // get return url from query parameters or default to home page
-   const returnUrl = router.currentRoute.value.query['returnUrl'] || '/';
-   router.push(returnUrl);
+ 
+   router.push('/');
    
    console.log("Login completed.")
    console.log("...........................")

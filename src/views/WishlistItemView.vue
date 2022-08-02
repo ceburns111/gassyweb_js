@@ -16,6 +16,7 @@ export default {
           minPrice: "",
           maxPrice: ""
         },
+        errors: [],
       }
   },   
   setup () {
@@ -28,7 +29,9 @@ export default {
     },
   methods: {
     async addNewItem() {
-        if (!this.input.make) {
+      this.errors = [];
+
+      if (!this.input.make) {
           this.errors.push('Make is required')
       }
        if (!this.input.model) {
@@ -42,6 +45,10 @@ export default {
       }
        if (!this.input.maxPrice) {
           this.errors.push('Maximum Price is required')
+      }
+
+      if (this.errors.length > 0) {
+        return; 
       }
 
       console.log(`Adding new item for account..${JSON.stringify(this.account.id)}`);
@@ -58,14 +65,17 @@ export default {
 <div v-if="this.items"></div>
  <div id="addItem">
     <h2>Add Item</h2>
-    <Input-Text type="text" name="make" v-model="input.make" placeholder="Make" />
-    <Input-Text type="text" name="model" v-model="input.model" placeholder="Model" />
-    <Input-Text type="text" name="category" v-model="input.itemCategory" placeholder="Category" />
-    <Input-Text type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
-    <Input-Text type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
+    <InputText type="text" name="make" v-model="input.make" placeholder="Make" />
+    <InputText type="text" name="model" v-model="input.model" placeholder="Model" />
+    <InputText type="text" name="category" v-model="input.itemCategory" placeholder="Category" />
+    <InputText type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
+    <InputText type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
     <Button class="p-button-sm" @click="addNewItem()">Add Item</Button>
   </div>
-  <div></div>
+  <Message v-for="error in this.errors" :key="error">{{error}}</Message>
+   
+  
+
 
 </template>
 
