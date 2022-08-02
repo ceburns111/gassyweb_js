@@ -40,6 +40,7 @@ export default {
 
 <template>
 <h1>Your Wishlist</h1>
+<div v-if="items.count != 0">
 <DataTable :value="items">
   <Column field="category" header="Product Category"></Column>
   <Column field="make" header="Make"></Column>
@@ -52,6 +53,10 @@ export default {
 </template>
   </Column>
 </DataTable>
+</div>
+<div v-else>
+  <p>Looks Like your wishlist is empty!</p>
+</div>
 <a @click="addNewItem()">Add an item!</a>
 </template>
 <style scoped>

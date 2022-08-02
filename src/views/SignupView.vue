@@ -12,14 +12,31 @@ export default {
             lastname: "",
             phonenumber: "",
             email: ""
-        }
+        },
+        errors: []
     }
-  },
-  setup() {
-    
   },
   methods: {
     async signup() {
+      if (!this.input.username) {
+        this.errors.push('Username is required')
+      }
+
+       if (!this.input.username) {
+        this.errors.push('First Name is required')
+      }
+
+       if (!this.input.lastname) {
+        this.errors.push('Last Name is required')
+      }
+       if (!this.input.phonenumber) {
+        this.errors.push('Phone Number is required')
+      }
+
+       if (!this.input.email) {
+        this.errors.push('Email Address is required')
+      }
+
       await accountService.signup(this.input.username, this.input.password, this.input.firstname, this.input.lastname, this.input.phonenumber, this.input.email);
     }
   }
