@@ -41,21 +41,10 @@ async function login(userName, userPassword) {
 
 async function signup(userName, userPassword, firstName, lastName, email, phoneNumber) {
     let data = { UserName: userName, UserPassword: userPassword, FirstName: firstName, LastName: lastName, Email: email, PhoneNumber: phoneNumber };
-    let signupResponse = await ax.post(`${baseUrl}/signup`, data);
-    
-    console.log(JSON.stringify(signupResponse.data));
-    if (!signupResponse.data) {
-        return;
-    }
+    await ax.post(`${baseUrl}/signup`, data);
+      
+    router.push('/');
 
-    // login(signupResponse.data['userName'], signupResponse.data['userPassword']);
-
-    // accountSubject.next(signupResponse.data);
-    // await _startAuthenticateTimer();
-
-    
-    router.push('/login');
-   
    console.log("Signup completed.")
    console.log("...........................")
    console.log("...........................")
