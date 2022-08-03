@@ -9,7 +9,8 @@ export default {
             username: "",
             password: "",
             token: ""
-        }
+        },
+        errors: []
     }
   },
   setup() {
@@ -17,6 +18,21 @@ export default {
   },
   methods: {
     async login() {
+      this.errors = [];
+      if (!this.input.username) {
+        this.errors.push('Username is required')
+       
+      }
+
+      if (!this.input.password) {
+        this.errors.push('Password is required')
+       
+      }
+
+       if (this.errors.length > 0) {
+        return;
+      }
+      
       await accountService.login(this.input.username, this.input.password);
     }
   }
@@ -26,11 +42,13 @@ export default {
 <template>
   <div>
     <h1>Login</h1>
-    <Input-Text type="text" name="username" v-model="input.username" placeholder="Username" />
-    <Input-Text type="password" name="password" v-model="input.password" placeholder="Password" />
+    
+    <InputText type="text" name="username" v-model="input.username" placeholder="Username" />
+    <InputText type="password" name="password" v-model="input.password" placeholder="Password" />
     <Button class="p-button-sm" type="button" @click="login()">Login</Button>
   </div>
-  <div>
-  </div>
+  <transition-group name="p-message" tag="div">
+    <Message v-for="error in this.errors" :key="error">{{error}}</Message>
+  </transition-group>
 </template>
 

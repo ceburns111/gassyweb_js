@@ -8,6 +8,7 @@ import Column from 'primevue/column';
 import DataTable from 'primevue/datatable'
 import Card from 'primevue/card';
 import Message from 'primevue/message';
+import Dropdown from 'primevue/dropdown';
 
 
 //import InputText from 'primevue/inputtext';
@@ -35,6 +36,7 @@ app.component('Column', Column);
 app.component('DataTable', DataTable);
 app.component('Card', Card);
 app.component('Message', Message);
+app.component('Dropdown', Dropdown);
 
 
 

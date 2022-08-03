@@ -25,14 +25,11 @@ export default {
   },
   methods: {
     addNewItem() {
-      router.push('/wishlist_item')
+      router.push({name: 'add_wishlist_item'});
     },
-    async deleteItem(itemId) {
-      //console.log(itemId);
-      console.log("deleting item");
-      await wishlistService.deleteItem(itemId)
-      console.log("item deleted");
-      
+    editItem(itemId) {
+      router.push({name: 'edit_wishlist_item', params: {id: itemId}})
+     
     }
   }
 };
@@ -49,7 +46,7 @@ export default {
   <Column field="maxPrice" header="Max Price"></Column>
  <Column>
   <template #body="slotProps">
-    <Button class="p-button-sm" @click="deleteItem(slotProps.data.id)">Delete</Button>
+    <Button class="p-button-sm" @click="editItem(slotProps.data.id)">Edit</Button>
 </template>
   </Column>
 </DataTable>
