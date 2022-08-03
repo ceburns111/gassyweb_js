@@ -13,10 +13,14 @@ export default {
           id: "",
           make: "",
           model: "",
-          itemCategory: "",
+          itemCategory: null,
           minPrice: "",
           maxPrice: ""
         },
+        itemCategories: [
+          {name: 'Eurorack', value: '0'},
+			    {name: 'Synthesizers', value: '1'},   
+			    {name: 'Pedals', value: '2'}],
         errors: [],
       }
   }, 
@@ -60,11 +64,11 @@ export default {
       }
 
       console.log(`Adding new item for account..${JSON.stringify(this.account.id)}`);
-      await wishlistService.updateItem(this.input.id, this.account.id, this.input.make, this.input.model, this.input.itemCategory, this.input.minPrice, this.input.maxPrice)
+      await wishlistService.updateItem(this.input.id, this.account.id, this.input.make, this.input.model, this.input.itemCategory.value, this.input.minPrice, this.input.maxPrice)
       console.log("Item Updated");
     },
-    deleteItem() {
-
+    async deleteItem() {
+      await wishlistService.deleteItem(this.input.id);
     }
   }
   
@@ -76,7 +80,7 @@ export default {
     <h2>Edit Item</h2>
     <InputText type="text" name="make" v-model="input.make" placeholder="Make" />
     <InputText type="text" name="model" v-model="input.model" placeholder="Model" />
-    <InputText type="text" name="category" v-model="input.itemCategory" placeholder="Category" />
+    <Dropdown v-model="input.itemCategory" :options="itemCategories" optionLabel="name" placeholder="Select a Category" />
     <InputText type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
     <InputText type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
     <Button class="p-button-sm" @click="editItem()">Save</Button>
