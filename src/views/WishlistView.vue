@@ -54,7 +54,11 @@ export default {
 <div v-else>
   <p>Looks Like your wishlist is empty!</p>
 </div>
-<a @click="addNewItem()">Add an item!</a>
+<a id="addMe" @click="addNewItem()">Add an item!</a>
 </template>
+
 <style scoped>
+#addMe {
+  font-size: large;
+}
 </style>

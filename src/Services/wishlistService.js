@@ -28,7 +28,7 @@ async function addItem(userId, make, model, category, minPrice, maxPrice) {
 
 async function updateItem(itemId, userId, make, model, category, minPrice, maxPrice) {
     console.log(`Updating item ${itemId}`);
-    var itemData = {Id: itemId, OwnerId: userId, Make: make, Model: model, Category: category, MinPrice: minPrice, maxPrice: maxPrice}
+    var itemData = {Id: itemId, OwnerId: userId, Make: make, Model: model, CategoryId: category, MinPrice: minPrice, maxPrice: maxPrice}
     await ax.put(`${baseUrl}/update`, itemData);
     router.push("/wishlist")
 }
@@ -37,5 +37,5 @@ async function deleteItem(itemId) {
     console.log(`Deleting item (id): ${itemId}`);
     var itemData = { id: itemId }
     await ax.post(`${baseUrl}/delete/${itemId}`, itemData);
-    router.push("/")
+    router.push("/wishlist")
 }
