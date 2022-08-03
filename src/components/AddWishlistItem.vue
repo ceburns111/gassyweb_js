@@ -4,30 +4,29 @@ import { accountService } from "../Services/accountService"
 import { ref } from 'vue';
 import { router } from '../router/router';
 
-
 export default {
-    name: "wishlist_item",
-    data () {
+     data () {
       return {
         input: {
           make: "",
           model: "",
-          itemCategory: "",
+          itemCategory: null,
           minPrice: "",
           maxPrice: ""
         },
+        itemCategories: [
+          {name: 'Eurorack', value: 'eurorack'},
+			    {name: 'Synthesizers', value: 'synthesizers'},   
+			    {name: 'Pedals', value: 'pedals'}],
         errors: [],
       }
-  },   
+  }, 
   setup () {
-      const account = ref(null);
-      accountService.account.subscribe(x => account.value = x);
-      
-      return {
-            account,
-        }
+    const account = ref(null);
+    accountService.account.subscribe(x => account.value = x);
+    return { account }
     },
-  methods: {
+    methods: {
     async addNewItem() {
       this.errors = [];
 
@@ -52,30 +51,29 @@ export default {
       }
 
       console.log(`Adding new item for account..${JSON.stringify(this.account.id)}`);
-      await wishlistService.addItem(this.account.id, this.input.make, this.input.model, this.input.itemCategory, this.input.minPrice, this.input.maxPrice)
+      await wishlistService.addItem(this.account.id, this.input.make, this.input.model, this.input.itemCategory.value, this.input.minPrice, this.input.maxPrice)
       router.push('/wishlist')
 
       console.log("item added");
     }
   }
+  
 };
 </script>
 
 <template>
-<div v-if="this.items"></div>
+<div></div>
  <div id="addItem">
     <h2>Add Item</h2>
     <InputText type="text" name="make" v-model="input.make" placeholder="Make" />
     <InputText type="text" name="model" v-model="input.model" placeholder="Model" />
-    <InputText type="text" name="category" v-model="input.itemCategory" placeholder="Category" />
+    <!-- <InputText type="text" name="category" v-model="input.itemCategory" placeholder="Category" /> -->
+    <Dropdown v-model="input.itemCategory" :options="itemCategories" optionLabel="name" placeholder="Select a Category" />
+
     <InputText type="text" name="minPrice" v-model="input.minPrice" placeholder="Min Price" />
     <InputText type="text" name="maxPrice" v-model="input.maxPrice" placeholder="Max Price" />
     <Button class="p-button-sm" @click="addNewItem()">Add Item</Button>
   </div>
   <Message v-for="error in this.errors" :key="error">{{error}}</Message>
-   
-  
-
-
 </template>
 
